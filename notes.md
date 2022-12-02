@@ -10,8 +10,9 @@
 `routes` - collection of end points `.route` and controllers `.controller`
   controllers are kept near router due to "close cooperation" between those codes. Route makes direct use of controller.
 
+
   
-`models`
+`models` - holds all data related logic
 
 
 # Notes
@@ -25,6 +26,7 @@
 * it is better to declare `controller` using `function` key word, so Node error handler could point on named function in case of code break;
 * always add response status via `res.status(200/400)` before response itself;
 * it recommended to `return` response, so there is **only one** response in controller (not common pattern but good idea);
+* common practice not to over complicate controller with data transformation, try to leave it in `model` 
 
 ## Models
 * piece of code to work with the raw data??
@@ -43,3 +45,4 @@ Node streams (like in [`planets.module.js`]('../../server/src/models/planets.mod
   * `--prefix` specify the root folder 
 2. `"build": "BUILD_PATH=../server/public react-scripts build",` creates `build` folder in server folder 
 3. [morgan]('https://www.npmjs.com/package/morgan') request logger middleware
+4. relate to separation of concern [SoC](https://nalexn.github.io/separation-of-concerns/) and (Layered Architecture)['https://www.vadimbulavin.com/layered-architecture-ios/']
