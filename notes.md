@@ -44,5 +44,5 @@ Node streams (like in [`planets.module.js`]('../../server/src/models/planets.mod
   * `&` runs independently of previous
   * `--prefix` specify the root folder 
 2. `"build": "BUILD_PATH=../server/public react-scripts build",` creates `build` folder in server folder 
-3. [morgan]('https://www.npmjs.com/package/morgan') request logger middleware
-4. relate to separation of concern [SoC](https://nalexn.github.io/separation-of-concerns/) and (Layered Architecture)['https://www.vadimbulavin.com/layered-architecture-ios/']
+3. [morgan](https://www.npmjs.com/package/morgan) request logger middleware
+4. relate to separation of concern [SoC](https://nalexn.github.io/separation-of-concerns/) and (Layered Architecture)[https://www.vadimbulavin.com/layered-architecture-ios/]
