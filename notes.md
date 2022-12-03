@@ -48,8 +48,9 @@ Node streams (like in [`planets.module.js`]('../../server/src/models/planets.mod
 4. relate to separation of concern [SoC](https://nalexn.github.io/separation-of-concerns/) and (Layered Architecture)[https://www.vadimbulavin.com/layered-architecture-ios/]
 5. `isNaN(value)` calls .valueOf() of **value** and converts it to number first 
 6. Pay attention to the headers
+7. Export functions in the same order as function definitions
+8. request params are **always** strings!! 
   
-
 
 ## Questions
 1.  Using FormDate object for form submission?  

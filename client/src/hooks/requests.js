@@ -38,11 +38,7 @@ async function httpSubmitLaunch(launch) {
 async function httpAbortLaunch(id) {
   try {
     return await fetch(`${API_URL}/launches/${id}`, {
-      method: 'delete',
-      headers: {
-        'Content-type': 'application/json'
-      },
-      body: JSON.stringify(id)
+      method: 'delete'
     })
   }
   catch (error) {

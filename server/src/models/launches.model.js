@@ -19,6 +19,11 @@ function getAllLaunches() {
   return Array.from(launches.values())
 }
 
+// util checks existing launch via Id
+function existLaunchWithId(launchId) {
+  return launches.has(launchId);
+}
+
 // sets new launch to the launches Map
 function addNewLaunch(newLaunch) {
   latestFlightNumber++;
@@ -31,9 +36,18 @@ function addNewLaunch(newLaunch) {
       upcoming: true,
       success: true
     }))
+};
+
+function abortLaunchById(launchId) {
+  const aborted = launches.get(launchId);
+  aborted.upcoming = false;
+  aborted.success = false;
+  return aborted
 }
 
 module.exports = {
   getAllLaunches,
-  addNewLaunch
+  existLaunchWithId,
+  addNewLaunch,
+  abortLaunchById
 }
