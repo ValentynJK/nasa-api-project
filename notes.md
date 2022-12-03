@@ -9,9 +9,7 @@
 `app` - express middleware
 `routes` - collection of end points `.route` and controllers `.controller`
   controllers are kept near router due to "close cooperation" between those codes. Route makes direct use of controller.
-
-
-  
+ 
 `models` - holds all data related logic
 
 
@@ -50,7 +48,13 @@ Node streams (like in [`planets.module.js`]('../../server/src/models/planets.mod
 6. Pay attention to the headers
 7. Export functions in the same order as function definitions
 8. request params are **always** strings!! 
+9. `watch` is more common name for `dev nodemon` script. For example `jest` library comes with built-in `'jest --watch'` script
   
 
 ## Questions
 1.  Using FormDate object for form submission?  
+
+
+## Testing
+1. Jest
+2. [supertest](https://www.npmjs.com/package/supertest) for API testing. Makes request against our API

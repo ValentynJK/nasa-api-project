@@ -9,10 +9,10 @@ function httpAddNewLaunch(req, res) {
   const launch = req.body;
   launch.launchDate = new Date(launch.launchDate); // converts incoming date to required format
   const { mission, rocket, target, launchDate } = launch;
-  // checks correctness of date property
-  if (isNaN(launchDate) || launchDate < Date.now()) return res.status(400).json({ error: 'Invalid launch date' })
   // checks appearance of date property
   if (!mission || !rocket || !target || !launchDate) return res.status(400).json({ error: 'Missing required launch property' })
+  // checks correctness of date property
+  if (isNaN(launchDate) || launchDate < Date.now()) return res.status(400).json({ error: 'Invalid launch date' })
 
   addNewLaunch(launch);
   return res.status(201).json(launch)
