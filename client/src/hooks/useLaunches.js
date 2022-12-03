@@ -6,7 +6,7 @@ import {
   httpAbortLaunch,
 } from './requests';
 
-function useLaunches(onSuccessSound, onAbortSound, onFailureSound) {
+function useLaunches(onSuccessSound, onAbortSound, onFailureSound, onFailureAlert) {
   const [launches, saveLaunches] = useState([]);
   const [isPendingLaunch, setPendingLaunch] = useState(false);
 
@@ -45,11 +45,9 @@ function useLaunches(onSuccessSound, onAbortSound, onFailureSound) {
       onFailureSound();
       setPendingLaunch(false);
       // alert the message to user
-      const error = await response.json();
-      const errorMessage = error.error
-      alert(errorMessage)
+      await onFailureAlert(response)
     }
-  }, [getLaunches, onSuccessSound, onFailureSound]);
+  }, [getLaunches, onSuccessSound, onFailureSound, onFailureAlert]);
 
   const abortLaunch = useCallback(async (id) => {
     const response = await httpAbortLaunch(id);
