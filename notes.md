@@ -53,8 +53,12 @@ Node streams (like in [`planets.module.js`]('../../server/src/models/planets.mod
 
 ## Questions
 1.  Using FormDate object for form submission?  
+2. How to prevent overuse of server CPU capacity by users?
 
 
 ## Testing
 1. Jest
 2. [supertest](https://www.npmjs.com/package/supertest) for API testing. Makes request against our API
+
+## Clusters and improving Node performance
+1. To use clusters you need to make your node process state less. Keep information in db
