@@ -49,6 +49,8 @@ Node streams (like in [`planets.module.js`]('../../server/src/models/planets.mod
 7. Export functions in the same order as function definitions
 8. request params are **always** strings!! 
 9. `watch` is more common name for `dev nodemon` script. For example `jest` library comes with built-in `'jest --watch'` script
+10. Add versioning to your API ([lesson 188](https://www.udemy.com/course/complete-nodejs-developer-zero-to-mastery/learn/lecture/26231498#questions))
+11. 
   
 
 ## Questions
