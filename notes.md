@@ -59,6 +59,18 @@ Node streams (like in [`planets.module.js`]('../../server/src/models/planets.mod
 ## Testing
 1. Jest
 2. [supertest](https://www.npmjs.com/package/supertest) for API testing. Makes request against our API
+3. In case of testing with 3-rd part Mongo connect database before tests and disconnect after
+4. Preset to use JEST test with 3-rd part MongoDB
+   1. "scripts": {
+        ...
+        `"test": "jest --detectOpenHandles",`
+        ...    
+      },
+    ...
+    "license": "ISC",
+    `"jest": { "testEnvironment": "node" }`
+    ...
+
 
 ## Clusters and improving Node performance
 1. To use clusters you need to make your node process state less. Keep information in db

@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const { parse } = require('csv-parse');
 
-const habitablePlanets = [];
+const planets = require('./planets.mongo.js')
 
 function isHabitablePlanet(planet) {
   return planet['koi_disposition'] === 'CONFIRMED'
@@ -10,7 +10,7 @@ function isHabitablePlanet(planet) {
     && planet['koi_prad'] < 1.6
 }
 
-function loadsPlanetData() {
+async function loadsPlanetData() {
 
   return new Promise((resolve, reject) => {
     fs.createReadStream(path.join(__dirname, '..', '..', 'data', 'kepler_data.csv')) // reading the file line by line as stream; return of every iteration is Buffer object
@@ -18,26 +18,47 @@ function loadsPlanetData() {
         comment: '#',
         columns: true
       })) // connects file to another stream and parse the data received above 
-      .on('data', (data) => {
+      .on('data', async (data) => { // async due to Mongo DB
         if (isHabitablePlanet(data)) {
-          habitablePlanets.push(data)
+          await savePlanet(data); // saves planet to MangoDB
         }
       })
       .on('error', (err) => {
         console.log(err);
         reject(err)
       })
-      .on('end', () => {
-        console.log('habitable planets found: ', habitablePlanets.length);
+      .on('end', async () => {
+        const countPlanetsFound = (await getAllPlanets()).length
+        console.log('habitable planets found: ', countPlanetsFound);
         resolve()
       })
   })
 }
 
-function getAllPlanets() {
-  return habitablePlanets
+async function getAllPlanets() {
+  return await planets.find({}, {
+    '_id': 0, '__v': 0,
+  })
 }
 
+async function savePlanet(planet) {
+  try {
+    // searches for the document by keplerName; --first argument
+    // if not found creates document using --second argument
+    // not creates duplicates --third argument
+    await planets.updateOne({
+      keplerName: planet.kepler_name
+    }, {
+      keplerName: planet.kepler_name
+    }, {
+      upsert: true
+    }
+    );
+  }
+  catch (err) {
+    console.error(`Could not save the planet. Error: ${err}`)
+  }
+}
 
 module.exports = {
   loadsPlanetData,
