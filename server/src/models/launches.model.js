@@ -6,20 +6,6 @@ const planets = require('./planets.mongo');
 
 const DEFAULT_FLIGHT_NUMBER = 100;
 
-const launch = {
-  flightNumber: 100, // flight_number
-  mission: 'Kepler Exploration X', // name
-  rocket: 'Explorer IS1', // rocket.name
-  launchDate: new Date('December 27, 2030'), // date_local
-  target: 'Kepler-442 b', // not applicable
-  customers: ['ZTM', 'NASA'], // payload.customers for each payload
-  upcoming: true, // upcoming
-  success: true, // success
-};
-
-
-saveLaunch(launch) // saves the test launch
-
 const SPACEX_API_URL = 'https://api.spacexdata.com/v4/launches/query';
 
 const spaceX_query = {
@@ -107,9 +93,12 @@ async function getLatestLaunchId(launchId) {
   return latestLaunch.flightNumber;
 }
 
-async function getAllLaunches() {
+async function getAllLaunches(skip, limit) {
   return await launches
     .find({}, { '__v': 0, '_id': 0 })
+    .sort({ 'flightNumber': 1 }) // sorts by flightNumber in ascending order (-1 for descending)
+    .skip(skip) // skips first 20 docs
+    .limit(limit) // limits search to 50 els
 }
 
 async function saveLaunch(launch) {
@@ -141,7 +130,7 @@ async function scheduleNewLaunch(launch) {
   });
 
   if (!targetPlanet) {
-    throw new Error(`No matching Errors found`)
+    throw new Error(`No matching planets found`)
   }
 
   const newFlightNumber = await getLatestLaunchId() + 1;
