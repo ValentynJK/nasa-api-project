@@ -1,6 +1,8 @@
-// Server code livers here
+// Server code lives here
 const http = require('http');
 const app = require('./app');
+
+require('dotenv').config();
 
 // mongo service connection
 const { mongoConnect } = require('../services/mongo')
@@ -14,7 +16,6 @@ const PORT = process.env.PORT || 8000;
 const server = http.createServer(app);
 
 // common node pattern.
-// nothing is rely on startServer() executions, thant why we do not need to await its resolving
 async function startServer() {
   await mongoConnect();
   await loadsPlanetData();
@@ -26,6 +27,7 @@ async function startServer() {
   })
 }
 
+// nothing is rely on startServer() executions, thant why we do not need to await its resolving
 startServer()
 
 

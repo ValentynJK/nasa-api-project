@@ -12,7 +12,6 @@
  
 `models` - holds all data related logic
 
-
 # Notes
 
 ## Questions
@@ -50,13 +49,12 @@ Node streams (like in [`planets.module.js`]('../../server/src/models/planets.mod
 8. request params are **always** strings!! 
 9. `watch` is more common name for `dev nodemon` script. For example `jest` library comes with built-in `'jest --watch'` script
 10. Add versioning to your API ([lesson 188](https://www.udemy.com/course/complete-nodejs-developer-zero-to-mastery/learn/lecture/26231498#questions))
-11. 
+11. In case of credentials leak - remove those from the original service and reconnect, they are already scammed, be sure.
   
 
 ## Questions
 1.  Using FormDate object for form submission?  
 2. How to prevent overuse of server CPU capacity by users?
-
 
 ## Testing
 1. Jest

@@ -1,8 +1,11 @@
 const mongoose = require('mongoose');
-const config = require('dotenv').config();
+require('dotenv').config()
 
 // for MongoDB connection
 const MONGO_URL = process.env.MONGO_URL
+
+// strict query due to changes in Mongoose 7
+mongoose.set('strictQuery', false)
 
 // event emitter which triggered once MongoDB connection is ready 
 mongoose.connection.once('open', () => {

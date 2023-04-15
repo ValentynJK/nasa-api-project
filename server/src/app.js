@@ -12,7 +12,7 @@ app.use(cors({
   origin: "http://localhost:3000"
 }));
 
-app.use(morgan('combined')); // reports all request was made to server
+app.use(morgan('short')); // reports all request was made to server
 
 app.use(express.json()); // parse incoming json coming from request body
 

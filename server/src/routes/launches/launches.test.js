@@ -28,26 +28,26 @@ describe('Launches API', () => {
     const completeLaunchData = {
       mission: 'test mission',
       rocket: 'test rocket',
-      target: 'test target',
+      target: 'Kepler-442 b',
       launchDate: 'January 2, 2028'
     }
 
     const missingLaunchData = {
       rocket: 'test rocket',
-      target: 'test target',
+      target: 'Kepler-442 b',
       launchDate: 'January 2, 2028'
     }
 
     const launchDataWithoutDate = {
       mission: 'test mission',
       rocket: 'test rocket',
-      target: 'test target',
+      target: 'Kepler-442 b',
     }
 
     const launchDataWithInvalidDate = {
       mission: 'test mission',
       rocket: 'test rocket',
-      target: 'test target',
+      target: 'Kepler-442 b',
       launchDate: 'January 200, 2029'
     }
 
