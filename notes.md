@@ -74,3 +74,7 @@ Node streams (like in [`planets.module.js`]('../../server/src/models/planets.mod
 
 ## Clusters and improving Node performance
 1. To use clusters you need to make your node process state less. Keep information in db
+
+## CI&CD
+1. CI - continuous integration is a part of code improvement which involves writing code, testing and building it. CI is the practice of automatically building, testing, and integrating code changes as they are made to catch and fix integration issues early in the development process.
+Generally checks whether code could be installed and build on server side
