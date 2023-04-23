@@ -10,7 +10,7 @@ jobs:
       CI: true # runs workflow in CI env (disable watch mode for test)
       strategy: 
         matrix:
-          node-version: [16.x, 18.x]
+          node-version: [14, 16, 18]
     runs-on: ubuntu-latest
     steps: 
       - uses: actions/checkout@v2
