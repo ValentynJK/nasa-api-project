@@ -7,8 +7,8 @@ on:
 jobs: 
   build:
     env: 
-      CI: true # runs workflow in CI env (disable watch mode for test)
-      strategy: 
+      CI: true 
+    strategy: 
         matrix:
           node: [14, 16, 18]
     runs-on: ubuntu-latest
